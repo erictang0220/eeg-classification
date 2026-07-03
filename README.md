@@ -1,10 +1,10 @@
 # EEG Signal Classification
 
-Deep learning model for classifying EEG (electroencephalogram) signals using PyTorch. Built as a course project for UCLA CS 147 (Introduction to Machine Learning).
+A PyTorch-based pipeline for classifying EEG (electroencephalogram) signals from raw brain recordings. Built as a course project for UCLA CS 147 (Introduction to Machine Learning).
 
 ## Overview
 
-EEG signals are electrical activity recordings from the brain. This project applies deep learning (CNN/RNN) to classify brain states from raw EEG data.
+EEG signals capture the electrical activity of the brain over time. This project implements a deep learning approach to classify brain states from raw EEG data, covering the full ML pipeline from data loading to model training and evaluation.
 
 ## Project Structure
 
@@ -12,31 +12,39 @@ EEG signals are electrical activity recordings from the brain. This project appl
 ├── EEG_loading.ipynb     # Data exploration and preprocessing notebook
 ├── train.py              # Training entry point
 └── src/
-    ├── dataloader.py     # Custom PyTorch Dataset for EEG data
-    ├── model.py          # CNN/RNN model architecture
-    └── trainer.py        # Training and evaluation loop
+    ├── dataloader.py     # Custom PyTorch Dataset for EEG data loading
+    ├── model.py          # Neural network model architecture (CNN/RNN)
+    └── trainer.py        # Training loop, validation, and evaluation
 ```
+
+## Tech Stack
+
+- Python 3
+- PyTorch -- model definition, training, and data loading
+- Matplotlib -- data visualization and exploratory analysis
+- Jupyter Notebook -- interactive data exploration
 
 ## Setup
 
 ```bash
-pip install torch torchvision matplotlib
+pip install torch torchvision matplotlib jupyter
 ```
 
 ## Usage
+
+Run training from the command line:
 
 ```bash
 python train.py
 ```
 
-Or explore the data interactively:
+Explore and preprocess the data interactively:
 
 ```bash
 jupyter notebook EEG_loading.ipynb
 ```
 
-## Tech Stack
+## Architecture
 
-- Python, PyTorch
-- Custom `torch.utils.data.Dataset` for EEG loading
-- Matplotlib for visualization
+The pipeline uses a custom `torch.utils.data.Dataset` (`EEGData`) to load raw EEG recordings, feeds them through a neural network defined in `src/model.py`, and trains using the `Trainer` class in `src/trainer.py`. The notebook (`EEG_loading.ipynb`) provides data exploration and visualization ahead of training.
+
